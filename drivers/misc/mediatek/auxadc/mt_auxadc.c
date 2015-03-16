@@ -47,7 +47,7 @@
 #include <cust_adc.h>		/* generate by DCT Tool */
 
 #include "mt_auxadc.h"
-#include <mt_auxadc_sw.h>
+#include <mt_auxadc_s_w.h>
 
 
 /*****************************************************************************
@@ -1160,12 +1160,12 @@ static int mt_auxadc_probe(struct platform_device *dev)
     struct device *adc_dev = NULL;
     printk("******** MT AUXADC driver probe!! ********\n");
     adc_channel_info_init();
-
-    if(clock_is_on(MT_PDN_PERI_AUXADC) == 0) //PWR_DOWN
-    {
+//profi fix
+// if(clock_is_on(MT_PDN_PERI_AUXADC) == 0) //PWR_DOWN
+//    {
         if (enable_clock(MT_PDN_PERI_AUXADC, "AUXADC"))
 		        printk("hwEnableClock AUXADC failed.");
-    }
+//}
 
     /* Integrate with NVRAM */
     ret = alloc_chrdev_region(&auxadc_cali_devno, 0, 1, AUXADC_CALI_DEVNAME);
