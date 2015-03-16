@@ -7,7 +7,7 @@ config ARM
 	select ARCH_SUPPORTS_ATOMIC_RMW
 	select ARCH_HAS_TICK_BROADCAST if GENERIC_CLOCKEVENTS_BROADCAST
 	select ARCH_WANT_IPC_PARSE_VERSION
-	select ARM_HAS_SG_CHAIN if (ARCH_MT6580 || ARCH_MT6589 || ARCH_MT6582 || ARCH_MT6572 || ARCH_MT8135 || ARCH_MT6595 || ARCH_MT6795 || ARCH_MT6752 || ARCH_MT6735 || ARCH_MT6735M || ARCH_MT6753 || ARCH_MT8127  || ARCH_MT8163 || ARCH_MT2601)
+	select ARM_HAS_SG_CHAIN if (ARCH_MT6580 || ARCH_MT6589 || ARCH_MT6582 || ARCH_MT6572 || ARCH_MT8135 || ARCH_MT6595 || ARCH_MT6795 || ARCH_MT6752 || ARCH_MT6735 || ARCH_MT6735M || ARCH_MT6753 || ARCH_MT8127  || ARCH_MT8163)
 	select BUILDTIME_EXTABLE_SORT if MMU
 	select CPU_PM if (SUSPEND || CPU_IDLE)
 	select DCACHE_WORD_ACCESS if (CPU_V6 || CPU_V6K || CPU_V7) && !CPU_BIG_ENDIAN && MMU
@@ -63,7 +63,7 @@ config ARM
 	select OLD_SIGSUSPEND3
 	select OLD_SIGACTION
 	select HAVE_CONTEXT_TRACKING
-	select CRYPTO_AES_ARM if (ARCH_MT6752 || ARCH_MT6735 || ARCH_MT6735M || ARCH_MT6753 || ARCH_MT8163)
+	select CRYPTO_AES_ARM if (ARCH_MT6752 || ARCH_MT8163)
 	help
 	  The ARM series is a line of low-power-consumption RISC chip designs
 	  licensed by ARM Ltd and targeted at embedded applications and
@@ -651,20 +651,6 @@ config ARCH_MT6572
 	help
 	  This enable support for MediaTek MT6572
 
-config ARCH_MT2601
-	bool "MediaTek MT2601"
-	select MEDIATEK_SOLUTION
-	select GENERIC_TIME
-	select GENERIC_CLOCKEVENTS
-	select ARCH_HAS_CPUFREQ
-	select ARM_AMBA
-	select CPU_V7
-	select HAVE_SMP
-	select NEED_MACH_MEMORY_H
-	select VFP_OPT
-	help
-	  This enable support for MediaTek MT2601
-
 config ARCH_MT6595
 	bool "MediaTek MT6595"
 	select GENERIC_TIME
@@ -834,6 +820,41 @@ config ARCH_MT8163
 	help
 	  This enable support for MediaTek MT8163
 
+
+config ARCH_MT6580
+    bool "MediaTek MT6580"
+    select GENERIC_TIME
+    select GENERIC_CLOCKEVENTS
+    select ARCH_HAS_CPUFREQ
+    select ARM_AMBA
+    select CPU_V7
+    select FIQ_GLUE
+    select HAVE_SMP
+    select NEED_MACH_MEMORY_H
+    select IRQ_DOMAIN
+    select IRQ_DOMAIN_DEBUG
+    select GENERIC_SCHED_CLOCK
+    select VFP_OPT
+    select ARM_ERRATA_824069
+    select ARM_ERRATA_826319
+    select ARCH_REQUIRE_GPIOLIB
+    help
+      This enable support for MediaTek MT6580
+
+config ARCH_MT6577
+        bool "MediaTek MT6577"
+        select GENERIC_TIME
+        select GENERIC_CLOCKEVENTS
+        select ARCH_HAS_CPUFREQ
+        select ARM_AMBA
+        select HAVE_SMP
+        select CPU_V7
+        select NEED_MACH_MEMORY_H
+        select MIGHT_HAVE_CACHE_L2X0
+        select ARM_GIC
+        help
+          This enable support for MediaTek MT6577.      
+      
 config ARCH_MT6795
 	bool "MediaTek MT6795"
 	select GENERIC_TIME
@@ -867,37 +888,9 @@ config ARCH_MT8127
 	select IRQ_DOMAIN_DEBUG
 	select ARCH_REQUIRE_GPIOLIB
 	select VFP_OPT
-	select KERNEL_MODE_NEON
-	select CRYPTO_AES_ARM_BS	
 	select HAVE_MTK_IN_HOUSE_TEE_SUPPORT
 	help
 	  This enable support for MediaTek MT8127
-
-config ARCH_MT6580
-    bool "MediaTek MT6580"
-    select GENERIC_TIME
-    select GENERIC_CLOCKEVENTS
-    select ARCH_HAS_CPUFREQ
-    select ARM_AMBA
-    select CPU_V7
-    select FIQ_GLUE if !TRUSTONIC_TEE_SUPPORT
-    select HAVE_SMP
-    select NEED_MACH_MEMORY_H
-    select IRQ_DOMAIN
-    select IRQ_DOMAIN_DEBUG
-    select GENERIC_SCHED_CLOCK
-    select VFP_OPT
-    select ARM_ERRATA_824069
-    select ARM_ERRATA_826319
-    select ARCH_REQUIRE_GPIOLIB
-    select MTK_CPU_STRESS
-    select MTK_LASTPC
-    select KERNEL_MODE_NEON
-    select CRYPTO_AES_ARM_BS
-    select MTK_EIC
-    help
-      This enable support for MediaTek MT6580
-
 
 config ARCH_SHMOBILE
 	bool "Renesas SH-Mobile / R-Mobile"
@@ -1223,10 +1216,6 @@ source "arch/arm/mach-msm/Kconfig"
 
 if ARCH_MT6572
 #source "arch/arm/mach-mt6572/Kconfig"
-endif
-
-if ARCH_MT2601
-#source "arch/arm/mach-mt2601/Kconfig"
 endif
 
 if ARCH_MT6582
@@ -2089,7 +2078,7 @@ config LOCAL_TIMERS
 	bool "Use local timer interrupts"
 	depends on SMP
 	default y
-	select HAVE_ARM_TWD if (!ARCH_MSM_SCORPIONMP && !EXYNOS4_MCT && !ARCH_MT6589 && !ARCH_MT6582 && !ARCH_MT8135 && !ARCH_MT6592 && !ARCH_MT6595 && !ARCH_MT6795 && !ARCH_MT6752 && !ARCH_MT8127 && !ARCH_MT6572 && !ARCH_MT6735 && !ARCH_MT6735M && !ARCH_MT6753 && !ARCH_MT8163 && !ARCH_MT6580 && !ARCH_MT2601)
+	select HAVE_ARM_TWD if (!ARCH_MSM_SCORPIONMP && !EXYNOS4_MCT && !ARCH_MT6589 && !ARCH_MT6582 && !ARCH_MT8135 && !ARCH_MT6592 && !ARCH_MT6595 && !ARCH_MT6795 && !ARCH_MT6752 && !ARCH_MT8127 && !ARCH_MT6572 && !ARCH_MT6735 && !ARCH_MT6735M && !ARCH_MT6753 && !ARCH_MT8163 &&!ARCH_MT6580)
 	help
 	  Enable support for local timers on SMP platforms, rather then the
 	  legacy IPI broadcast method.  Local timers allows the system

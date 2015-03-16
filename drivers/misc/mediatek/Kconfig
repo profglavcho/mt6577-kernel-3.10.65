@@ -86,7 +86,6 @@ config MTK_SECURITY_SW_SUPPORT
 	  be built into software images
 
 config HAVE_MTK_IN_HOUSE_TEE_SUPPORT
-        bool "Enable MTK in-house TEE Solution"
 	def_bool n
 
 config MTK_IN_HOUSE_TEE_SUPPORT
@@ -306,11 +305,6 @@ config CUSTOM_KERNEL_SENSORHUB
 	  sensors. The value is combination of sensor hub driver(get data...etc)
 	  and sensor hub framework driver(transmit shf info)
 
-config INPUT_CWSTM32
-	bool "CONFIG_INPUT_CWSTM32"
-	help
-	  Cywee on STM32
-
 config CUSTOM_KERNEL_STEP_COUNTER
 	string "CUSTOM_KERNEL_STEP_COUNTER"
 	help
@@ -410,9 +404,9 @@ config CUSTOM_KERNEL_SSW
 	  ssw_generic_v2: internal switcher for K2 phone
 	  fxla2203: phase-out
 	  combo_fxla2203: external switcher for MT6582+EVDO, MT6592+EVDO
-	  combo_fxla2203_v2: 2 2X2 external switcher for ROME(MT6595 MT6795) DSDA
-	  combo_fxla2203_v3: 1 2X2 external switcher for X2(MT6595 MT6795) DSDA
-	  ssw_single_v2: internel switcher for Denali(1,2,3) 
+	  combo_fxla2203_v2: 2 2X2 external switcher for ROME DSDA
+	  combo_fxla2203_v3: 1 2X2 external switcher for X2 DSDA
+
 config MTK_FORCE_CLUSTER1
 	bool "MTK_FORCE_CLUSTER1"
 	help
@@ -445,10 +439,6 @@ config MTK_TC7_FEATURE
 	bool "MTK_TC7_FEATURE"
 	default n
 
-config MTK_TC1_FM_AT_SUSPEND
-	bool "MTK_TC1_FM_AT_SUSPEND"
-	default n
-
 source "drivers/misc/mediatek/Kconfig.kernel"
 source "drivers/misc/mediatek/Kconfig.drivers"
 source "drivers/misc/mediatek/smartpa/Kconfig"
@@ -478,7 +468,5 @@ source "drivers/misc/mediatek/vcorefs/Kconfig"
 source "drivers/misc/mediatek/emi_mpu/Kconfig"
 source "drivers/misc/mediatek/emi_bwl/Kconfig"
 source "drivers/misc/mediatek/dbg_dump/Kconfig"
-source "drivers/misc/mediatek/connectivity/Kconfig"
-source "drivers/misc/mediatek/gps/Kconfig"
 
 endif
