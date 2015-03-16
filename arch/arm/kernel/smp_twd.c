@@ -237,7 +237,7 @@ static irqreturn_t twd_handler(int irq, void *dev_id)
 
 	return IRQ_NONE;
 }
-
+#if 0
 static void twd_get_clock(struct device_node *np)
 {
 	int err;
@@ -261,7 +261,7 @@ static void twd_get_clock(struct device_node *np)
 
 	twd_timer_rate = clk_get_rate(twd_clk);
 }
-
+#endif
 /*
  * Setup the local clock events for a CPU.
  */
@@ -332,9 +332,9 @@ static int __init twd_local_timer_common_register(struct device_node *np)
 	err = local_timer_register(&twd_lt_ops);
 	if (err)
 		goto out_irq;
-
+#if 0
 	twd_get_clock(np);
-
+#endif
 	return 0;
 
 out_irq:
