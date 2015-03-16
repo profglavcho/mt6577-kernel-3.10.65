@@ -130,7 +130,7 @@
 *                              C O N S T A N T S
 ********************************************************************************
 */
-/* 3 /* --------------- Constants for Ethernet/802.11 MAC --------------- */ */
+//* 3 /* --------------- Constants for Ethernet/802.11 MAC --------------- */ */
 /* MAC Address */
 #define MAC_ADDR_LEN                            6
 
@@ -286,7 +286,7 @@
 #define MAXIMUM_OPERATION_CHANNEL_LIST          32
 
 
-/* 3 /* --------------- IEEE 802.11 PICS --------------- */ */
+//* 3 /* --------------- IEEE 802.11 PICS --------------- */ */
 /* Annex D - dot11OperationEntry 2 */
 #define DOT11_RTS_THRESHOLD_MIN                 0
 #define DOT11_RTS_THRESHOLD_MAX                 2347	/* from Windows DDK */
@@ -336,7 +336,7 @@
 
 
 
-/* 3 /* --------------- IEEE 802.11 MAC header fields --------------- */ */
+//* 3 /* --------------- IEEE 802.11 MAC header fields --------------- */ */
 /* 7.1.3.1 Masks for the subfields in the Frame Control field */
 #define MASK_FC_PROTOCOL_VER                    BITS(0, 1)
 #define MASK_FC_TYPE                            BITS(2, 3)
@@ -493,7 +493,7 @@
 
 #define BAR_COMPRESSED_VARIANT_FRAME_LEN        (16 + 4)
 
-/* 3 /* --------------- IEEE 802.11 frame body fields --------------- */ */
+//* 3 /* --------------- IEEE 802.11 frame body fields --------------- */ */
 /* 3 Management frame body components (I): Fixed Fields. */
 /* 7.3.1.1 Authentication Algorithm Number field */
 #define AUTH_ALGORITHM_NUM_FIELD_LEN                2
@@ -1041,7 +1041,7 @@
 
 #define ACTION_UNPROTECTED_WNM_TIMING_MEAS_LEN      12
 
-/* 3 /* --------------- WFA  frame body fields --------------- */ */
+//* 3 /* --------------- WFA  frame body fields --------------- */ */
 #define VENDOR_OUI_WFA                              { 0x00, 0x50, 0xF2 }
 #define VENDOR_OUI_WFA_SPECIFIC                     { 0x50, 0x6F, 0x9A }
 #define VENDOR_OUI_TYPE_WPA                         1

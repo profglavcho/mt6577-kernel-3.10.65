@@ -874,7 +874,7 @@ VOID p2pFsmRunEventWfdSettingUpdate(IN P_ADAPTER_T prAdapter, IN P_MSG_HDR_T prM
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 #endif
 
-/* 3 /* --------------- WFA P2P DEFAULT PARAMETERS --------------- */ */
+/* 3  --------------- WFA P2P DEFAULT PARAMETERS ---------------  */
 #define P2P_WILDCARD_SSID                           "DIRECT-"
 #define P2P_WILDCARD_SSID_LEN                       7
 #define P2P_GROUP_ID_LEN                            9
@@ -922,7 +922,7 @@ VOID p2pFsmRunEventWfdSettingUpdate(IN P_ADAPTER_T prAdapter, IN P_MSG_HDR_T prM
 #define P2P_INVITAION_TIMEOUT_MS                         500	/* Timeout Wait Invitation Resonse. */
 #define P2P_PROVISION_DISCOVERY_TIMEOUT_MS     500	/* Timeout Wait Provision Discovery Resonse. */
 
-/* 3 /* --------------- WFA P2P IE --------------- */ */
+/* 3  --------------- WFA P2P IE ---------------  */
 /* P2P 4.1.1 - P2P IE format */
 #define P2P_OUI_TYPE_LEN                            4
 #define P2P_IE_OUI_HDR                              (ELEM_HDR_LEN + P2P_OUI_TYPE_LEN)	/* == OFFSET_OF(IE_P2P_T, aucP2PAttributes[0]) */
@@ -968,18 +968,18 @@ VOID p2pFsmRunEventWfdSettingUpdate(IN P_ADAPTER_T prAdapter, IN P_MSG_HDR_T prM
 #define P2P_ATTRI_MAX_LEN_EXT_LISTEN_TIMING                 4	/* 8 */
 #define P2P_ATTRI_MAX_LEN_INTENDED_P2P_IF_ADDR              6	/* 9 */
 #define P2P_ATTRI_MAX_LEN_P2P_MANAGEABILITY                 1	/* 10 */
-/* #define P2P_ATTRI_MAX_LEN_CHANNEL_LIST                      3 + (n* (2 + num_of_ch)) /* 11 */ */
+/* #define P2P_ATTRI_MAX_LEN_CHANNEL_LIST                      3 + (n* (2 + num_of_ch))  11  */
 #define P2P_ATTRI_LEN_CHANNEL_LIST                                  3	/* 11 */
 #define P2P_ATTRI_LEN_CHANNEL_ENTRY                                  2	/* 11 */
 
 
-/* #define P2P_ATTRI_MAX_LEN_NOTICE_OF_ABSENCE                 2 + (n* (13)) /* 12 */ */
+/* #define P2P_ATTRI_MAX_LEN_NOTICE_OF_ABSENCE                 2 + (n* (13))  12  */
 #define P2P_ATTRI_MAX_LEN_NOTICE_OF_ABSENCE                 (2 + (P2P_MAXIMUM_NOA_COUNT*(13)))	/* 12 */
 
 #define P2P_ATTRI_MAX_LEN_P2P_DEV_INFO                      17 + (8 * (8)) + 36	/* 13 */
-/* #define P2P_ATTRI_MAX_LEN_P2P_GROUP_INFO                    n* (25 + (m* (8)) + 32) /* 14 */ */
+/* #define P2P_ATTRI_MAX_LEN_P2P_GROUP_INFO                    n* (25 + (m* (8)) + 32)  14  */
 #define P2P_ATTRI_MAX_LEN_P2P_GROUP_ID                      38	/* 15 */
-#define P2P_ATTRI_MAX_LEN_P2P_INTERFACE                     253	/* 7 + 6* [0~41] /* 16 */ */
+#define P2P_ATTRI_MAX_LEN_P2P_INTERFACE                     253	/* 7 + 6* [0~41]  16  */
 #if CID52_53_54
 #define P2P_ATTRI_MAX_LEN_OPERATING_CHANNEL                 5	/* 17 */
 #else
@@ -1062,7 +1062,7 @@ VOID p2pFsmRunEventWfdSettingUpdate(IN P_ADAPTER_T prAdapter, IN P_MSG_HDR_T prM
 #define P2P_INVITATION_FLAGS_INVITATION_TYPE       BIT(0)
 #define P2P_INVITATION_TYPE_INVITATION                      0
 #define P2P_INVITATION_TYPE_REINVOKE                          1
-/* 3 /* --------------- WPS Data Element Definitions --------------- */ */
+/* 3  --------------- WPS Data Element Definitions ---------------  */
 /* P2P 4.2.2 - General WSC Attribute */
 #define WSC_ATTRI_HDR_LEN                                   4	/* ID(2 octet) + Length(2 octets) */
 #define WSC_ATTRI_MAX_LEN_VERSION                           1
@@ -1160,7 +1160,7 @@ enum wps_dev_password_id {
 #pragma pack(1)
 #endif
 
-/* 3 /* --------------- WFA P2P IE and Attributes --------------- */ */
+/* 3  --------------- WFA P2P IE and Attributes ---------------  */
 
 /* P2P 4.1.1 - P2P Information Element */
 typedef struct _IE_P2P_T {
@@ -1317,7 +1317,7 @@ typedef struct _P2P_ATTRI_DEV_INFO_T {
 typedef struct _DEVICE_NAME_TLV_T {
 	UINT_16 u2Id;		/* WPS Attribute Type */
 	UINT_16 u2Length;	/* Data Length */
-	UINT_8 aucName[32];	/* Device Name */* / TODO: Fixme */
+	UINT_8 aucName[32];	/* Device Name  / TODO: Fixme */
 } __KAL_ATTRIB_PACKED__ DEVICE_NAME_TLV_T, *P_DEVICE_NAME_TLV_T;
 
 
@@ -1410,7 +1410,7 @@ typedef struct _WSC_ATTRI_CONFIGURATION_METHOD_T {
 #endif
 
 
-/* 3 /* --------------- WFA P2P Attributes Handler prototype --------------- */ */
+/* 3  --------------- WFA P2P Attributes Handler prototype --------------- */
 typedef UINT_32(*PFN_APPEND_ATTRI_FUNC) (P_ADAPTER_T, BOOLEAN, PUINT_16, PUINT_8, UINT_16);
 
 typedef VOID(*PFN_HANDLE_ATTRI_FUNC) (P_SW_RFB_T, P_P2P_ATTRIBUTE_T);
@@ -1445,8 +1445,8 @@ typedef enum _ENUM_P2P_INVITATION_POLICY {
 	ENUM_P2P_INVITATION_POLICY_NUM
 } ENUM_P2P_INVITATION_POLICY, P_ENUM_P2P_INVITATION_POLICY;
 
-/* 3 /* --------------- Data Structure for P2P Operation --------------- */ */
-/* 3 /* Session for CONNECTION SETTINGS of P2P */ */
+/* 3  --------------- Data Structure for P2P Operation ---------------  */
+/* 3  Session for CONNECTION SETTINGS of P2P  */
 struct _P2P_CONNECTION_SETTINGS_T {
 	UINT_8 ucDevNameLen;
 	UINT_8 aucDevName[WPS_ATTRI_MAX_LEN_DEVICE_NAME];

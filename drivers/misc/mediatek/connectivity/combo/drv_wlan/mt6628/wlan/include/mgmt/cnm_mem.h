@@ -790,7 +790,7 @@ struct _STA_RECORD_T {
     /*------------------------------------------------------------------------------------------*/
 
 	UINT_8 ucFreeQuota;	/* Per Sta flow controal. Valid when fgIsInPS is TRUE. Chnage it for per Queue flow control  */
-	/* UINT_8                  aucFreeQuotaPerQueue[NUM_OF_PER_STA_TX_QUEUES]; /* used in future */ */
+	/* UINT_8                  aucFreeQuotaPerQueue[NUM_OF_PER_STA_TX_QUEUES];  used in future  */
 	UINT_8 ucFreeQuotaForDelivery;
 	UINT_8 ucFreeQuotaForNonDelivery;
 #if CFG_ENABLE_PKT_LIFETIME_PROFILE && CFG_ENABLE_PER_STA_STATISTICS
@@ -832,7 +832,7 @@ struct _STA_RECORD_T {
 /* MSDU_INFO and SW_RFB structure */
 typedef struct _MSDU_INFO_T {
 
-	/* 4  /* ----------------MSDU_INFO and SW_RFB Common Fields------------------ */ */
+	/* 4  ----------------MSDU_INFO and SW_RFB Common Fields------------------  */
 
 	LINK_ENTRY_T rLinkEntry;
 	PUINT_8 pucBuffer;	/* Pointer to the associated buffer */
@@ -861,7 +861,7 @@ typedef struct _MSDU_INFO_T {
 
 	UINT_8 ucControlFlag;	/* For specify some Control Flags, e.g. Basic Rate */
 
-	/* 4 /* -----------------------Non-Common ------------------------- */ */
+	/* 4  -----------------------Non-Common -------------------------  */
 	/* TODO: move flags to ucControlFlag */
 
 	BOOLEAN fgIs1xFrame;	/* Set to TRUE for 802.1x frame */
@@ -905,7 +905,7 @@ typedef struct _MSDU_INFO_T {
 /* nic_rx.h */
 typedef struct _SW_RFB_T {
 
-	/* 4 /* ----------------MSDU_INFO and SW_RFB Common Fields------------------ */ */
+	/* 4  ----------------MSDU_INFO and SW_RFB Common Fields------------------  */
 
 	LINK_ENTRY_T rLinkEntry;
 	PUINT_8 pucBuffer;	/* Pointer to the associated buffer */
@@ -934,7 +934,7 @@ typedef struct _SW_RFB_T {
 
 	UINT_8 ucControlFlag;	/* For specify some Control Flags, e.g. Basic Rate */
 
-	/* 4 /* -----------------------Non-Common ------------------------- */ */
+	/* 4  -----------------------Non-Common -------------------------  */
 
 	/* For composing the HIF RX Header (TODO: move flags to ucControlFlag) */
 	PUINT_8 pucHifRxPacket;	/* Pointer to the Response packet to HIF RX0 or RX1 */

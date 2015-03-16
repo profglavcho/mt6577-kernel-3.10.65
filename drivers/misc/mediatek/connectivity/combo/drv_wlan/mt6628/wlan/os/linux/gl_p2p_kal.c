@@ -904,14 +904,14 @@ kalP2PIndicateChannelReady(IN P_GLUE_INFO_T prGlueInfo,
 					  u8SeqNum,	/* u64 cookie, */
 					  prIEEE80211ChnlStruct,	/* struct ieee80211_channel * chan, */
 					  u4Duration,	/* unsigned int duration, */
-					  GFP_KERNEL);	/* gfp_t gfp    /* allocation flags */ */
+					  GFP_KERNEL);	/* gfp_t gfp     allocation flags  */
 #else
 		cfg80211_ready_on_channel(prGlueInfo->prP2PInfo->prDevHandler,	/* struct net_device * dev, */
 					  u8SeqNum,	/* u64 cookie, */
 					  prIEEE80211ChnlStruct,	/* struct ieee80211_channel * chan, */
 					  eChnlType,	/* enum nl80211_channel_type channel_type, */
 					  u4Duration,	/* unsigned int duration, */
-					  GFP_KERNEL);	/* gfp_t gfp    /* allocation flags */ */
+					  GFP_KERNEL);	/* gfp_t gfp     allocation flags  */
 #endif
 	} while (FALSE);
 
@@ -1160,7 +1160,7 @@ kalP2PGCIndicateConnectionStatus(IN P_GLUE_INFO_T prGlueInfo,
 
 		if (prP2pConnInfo) {
 			cfg80211_connect_result(prGlueP2pInfo->prDevHandler,	/* struct net_device * dev, */
-						prP2pConnInfo->aucBssid, prP2pConnInfo->aucIEBuf, prP2pConnInfo->u4BufLength, pucRxIEBuf, u2RxIELen, u2StatusReason, GFP_KERNEL);	/* gfp_t gfp    /* allocation flags */ */
+						prP2pConnInfo->aucBssid, prP2pConnInfo->aucIEBuf, prP2pConnInfo->u4BufLength, pucRxIEBuf, u2RxIELen, u2StatusReason, GFP_KERNEL);	/* gfp_t gfp     allocation flags  */
 			prP2pConnInfo->fgIsConnRequest = FALSE;
 		} else {
 			/* Disconnect, what if u2StatusReason == 0? */

@@ -1687,7 +1687,7 @@ typedef struct _CMD_GET_STA_STATISTICS_T {
 typedef struct _EVENT_STA_STATISTICS_T {
 	/* Event header */
 	/* UINT_16     u2Length; */
-	/* UINT_16     u2Reserved1;    /* Must be filled with 0x0001 (EVENT Packet) */ */
+	/* UINT_16     u2Reserved1;    /* Must be filled with 0x0001 (EVENT Packet)  */
 	/* UINT_8            ucEID; */
 	/* UINT_8      ucSeqNum; */
 	/* UINT_8            aucReserved2[2]; */

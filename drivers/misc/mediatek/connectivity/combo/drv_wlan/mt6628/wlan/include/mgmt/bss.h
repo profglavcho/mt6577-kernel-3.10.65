@@ -140,7 +140,7 @@
 ********************************************************************************
 */
 /* NOTE(Kevin): change define for george */
-/* #define MAX_LEN_TIM_PARTIAL_BMP     (((MAX_ASSOC_ID + 1) + 7) / 8)   /* Required bits = (MAX_ASSOC_ID + 1) */ */
+/* #define MAX_LEN_TIM_PARTIAL_BMP     (((MAX_ASSOC_ID + 1) + 7) / 8)    Required bits = (MAX_ASSOC_ID + 1)  */
 #define MAX_LEN_TIM_PARTIAL_BMP                     ((CFG_STA_REC_NUM + 7) / 8)  /* reserve length greater than maximum size of STA_REC */	/* obsoleted: Assume we only use AID:1~15 */
 
 /* CTRL FLAGS for Probe Response */

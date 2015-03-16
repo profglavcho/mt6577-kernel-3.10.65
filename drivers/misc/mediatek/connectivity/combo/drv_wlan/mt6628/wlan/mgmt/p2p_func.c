@@ -6,7 +6,7 @@
 
 
 APPEND_VAR_ATTRI_ENTRY_T txAssocRspAttributesTable[] = {
-	{(P2P_ATTRI_HDR_LEN + P2P_ATTRI_MAX_LEN_STATUS), NULL, p2pFuncAppendAttriStatusForAssocRsp}	/* 0 */* / Status */
+	{(P2P_ATTRI_HDR_LEN + P2P_ATTRI_MAX_LEN_STATUS), NULL, p2pFuncAppendAttriStatusForAssocRsp}	/* 0 * Status */
 	, {(P2P_ATTRI_HDR_LEN + P2P_ATTRI_MAX_LEN_EXT_LISTEN_TIMING), NULL, p2pFuncAppendAttriExtListenTiming}	/* 8 */
 };
 
@@ -1627,7 +1627,7 @@ p2pFuncValidateAssocReq(IN P_ADAPTER_T prAdapter, IN P_SW_RFB_T prSwRfb, OUT PUI
 			break;
 		}
 #if CFG_SUPPORT_WFD && 1
-		/* LOG_FUNC("Skip check WFD IE becasue some API is not ready\n"); /* Eddie */ */
+		/* LOG_FUNC("Skip check WFD IE becasue some API is not ready\n");  Eddie  */
 		if (!prAdapter->rWifiVar.prP2pFsmInfo) {
 			fgReplyAssocResp = FALSE;
 			ASSERT(FALSE);
@@ -1683,7 +1683,7 @@ p2pFuncValidateAssocReq(IN P_ADAPTER_T prAdapter, IN P_SW_RFB_T prSwRfb, OUT PUI
 					/* u2AttriListLen, */
 					/* WFD_ATTRI_ID_DEV_INFO); */
 					/* if (prAttriWfdDevInfo == NULL) { */
-					/* /* No such attribute. */ */
+					/*  No such attribute.  */
 					/* break; */
 					/* } */
 
@@ -2148,7 +2148,7 @@ p2pFuncParseBeaconContent(IN P_ADAPTER_T prAdapter,
 				prP2pBssInfo->ucAllSupportedRatesLen +=
 				    EXT_SUP_RATES_IE(pucIE)->ucLength;
 				break;
-			case ELEM_ID_HT_OP:	/* 61 */* * V */// TODO: */
+			case ELEM_ID_HT_OP:	/* 61 ** * V */// TODO: */
 				{
 #if 1
 					DBGLOG(P2P, TRACE,

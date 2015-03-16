@@ -691,7 +691,7 @@ typedef struct _GL_IO_REQ_T {
 typedef struct _GL_BOW_INFO {
 	BOOLEAN fgIsRegistered;
 	dev_t u4DeviceNumber;	/* dynamic device number */
-/* struct kfifo            *prKfifo;       /* for buffering indicated events */ */
+//* struct kfifo            *prKfifo;       /* for buffering indicated events */ */
 	struct kfifo rKfifo;	/* for buffering indicated events */
 	spinlock_t rSpinLock;	/* spin lock for kfifo */
 	struct cdev cdev;

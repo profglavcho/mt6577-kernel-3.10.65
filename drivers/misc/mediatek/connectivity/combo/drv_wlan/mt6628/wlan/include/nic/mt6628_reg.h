@@ -169,7 +169,7 @@ typedef struct _ENHANCE_MODE_DATA_STRUCT_T {
 	UINT_32 u4RcvMailbox0;
 	UINT_32 u4RcvMailbox1;
 } ENHANCE_MODE_DATA_STRUCT_T, *P_ENHANCE_MODE_DATA_STRUCT_T;
-/* #endif /* ENHANCE_MODE_DATA_STRUCT_T */ */
+/* #endif  ENHANCE_MODE_DATA_STRUCT_T  */
 
 
 /* 2 Definition in each register */

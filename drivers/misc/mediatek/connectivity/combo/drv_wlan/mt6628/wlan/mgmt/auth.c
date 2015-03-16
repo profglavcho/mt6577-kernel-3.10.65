@@ -1127,7 +1127,7 @@ authSendDeauthFrame(IN P_ADAPTER_T prAdapter,
 
 #endif
 
-	/* 4 <6> compose Deauthentication frame header and some fixed fields */ */
+	/* 4 <6> compose Deauthentication frame header and some fixed fields  */
 	authComposeDeauthFrameHeaderAndFF((PUINT_8)
 					  ((UINT_32) (prMsduInfo->prPacket) +
 					   MAC_TX_RESERVED_FIELD), pucReceiveAddr, pucTransmitAddr,

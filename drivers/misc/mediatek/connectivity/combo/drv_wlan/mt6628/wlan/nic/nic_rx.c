@@ -3106,7 +3106,7 @@ VOID nicRxQueryStatus(IN P_ADAPTER_T prAdapter, IN PUINT_8 pucBuffer, OUT PUINT_
 	prRxCtrl = &prAdapter->rRxCtrl;
 	ASSERT(prRxCtrl);
 
-	/* if (pucBuffer) {} /* For Windows, we'll print directly instead of sprintf() */ */
+	/* if (pucBuffer) {}  For Windows, we'll print directly instead of sprintf()  */
 	ASSERT(pu4Count);
 
 	SPRINTF(pucCurrBuf, ("\n\nRX CTRL STATUS:"));
@@ -3167,7 +3167,7 @@ VOID nicRxQueryStatistics(IN P_ADAPTER_T prAdapter, IN PUINT_8 pucBuffer, OUT PU
 	prRxCtrl = &prAdapter->rRxCtrl;
 	ASSERT(prRxCtrl);
 
-	/* if (pucBuffer) {} /* For Windows, we'll print directly instead of sprintf() */ */
+	/* if (pucBuffer) {}  For Windows, we'll print directly instead of sprintf()  */
 	ASSERT(pu4Count);
 
 #define SPRINTF_RX_COUNTER(eCounter) \

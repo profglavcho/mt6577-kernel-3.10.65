@@ -2242,7 +2242,7 @@ VOID qmUpdateAverageTxQueLen(IN P_ADAPTER_T prAdapter)
 	P_STA_RECORD_T prStaRec;
 	P_QUE_MGT_T prQM = &prAdapter->rQM;
 
-	/* 4 <1> Update the queue lengths for TC0 to TC3 (skip TC4) and TC5 */ */
+	/* 4 <1> Update the queue lengths for TC0 to TC3 (skip TC4) and TC5  */
 	for (i = 0; i < NUM_OF_PER_STA_TX_QUEUES - 1; i++) {
 		u4CurrQueLen = 0;
 

@@ -381,7 +381,7 @@
 				     RATE_SET_BIT_54M)
 
 #define RATE_SET_HT                 (RATE_SET_ERP)
-/* #define RATE_SET_HT                 (RATE_SET_ERP | RATE_SET_BIT_HT_PHY) /* NOTE(Kevin): TBD */ */
+//* #define RATE_SET_HT                 (RATE_SET_ERP | RATE_SET_BIT_HT_PHY) /* NOTE(Kevin): TBD */ */
 
 
 #define RATE_SET_ALL_ABG             RATE_SET_ERP
@@ -548,7 +548,7 @@ typedef enum _ENUM_PWR_STATE_T {
 } ENUM_PWR_STATE_T;
 
 typedef enum _ENUM_PHY_TYPE_INDEX_T {
-	/* PHY_TYPE_DSSS_INDEX,      /* DSSS PHY (clause 15) -- Not used anymore */ */
+	//* PHY_TYPE_DSSS_INDEX,      /* DSSS PHY (clause 15) -- Not used anymore */ */
 	PHY_TYPE_HR_DSSS_INDEX = 0,	/* HR/DSSS PHY (clause 18) */
 	PHY_TYPE_ERP_INDEX,	/* ERP PHY (clause 19) */
 	PHY_TYPE_ERP_P2P_INDEX,	/* ERP PHY (clause 19) w/o HR/DSSS */

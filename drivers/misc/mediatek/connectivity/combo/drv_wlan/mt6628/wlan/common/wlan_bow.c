@@ -1864,8 +1864,8 @@ VOID bowStarting(IN P_ADAPTER_T prAdapter)
 			prBssInfo->u2OperationalRateSet = RATE_SET_ERP;
 			prBssInfo->ucNonHTBasicPhyType = PHY_TYPE_ERP_INDEX;
 		} else {
-			/* prBssInfo->ucPhyTypeSet = PHY_TYPE_SET_802_11BG; /* Depend on eBand */ */
-			/* prBssInfo->ucConfigAdHocAPMode = AP_MODE_MIXED_11BG; /* Depend on eCurrentOPMode and ucPhyTypeSet */ */
+			/* prBssInfo->ucPhyTypeSet = PHY_TYPE_SET_802_11BG;  Depend on eBand  */
+			/* prBssInfo->ucConfigAdHocAPMode = AP_MODE_MIXED_11BG;  Depend on eCurrentOPMode and ucPhyTypeSet  */
 			prBssInfo->ucPhyTypeSet = PHY_TYPE_SET_802_11A;	/* Depend on eBand */
 			prBssInfo->ucConfigAdHocAPMode = AP_MODE_11A;	/* Depend on eCurrentOPMode and ucPhyTypeSet */
 
@@ -2173,7 +2173,7 @@ VOID bowResponderScan(IN P_ADAPTER_T prAdapter)
 	/*Change state to SCANNING */
 	bowSetBowTableState(prAdapter, prBowFsmInfo->aucPeerAddress, BOW_DEVICE_STATE_SCANNING);
 
-	/* prBowFsmInfo->fgTryScan = FALSE; /* Will enable background sleep for infrastructure */ */
+	/* prBowFsmInfo->fgTryScan = FALSE; Will enable background sleep for infrastructure  */
 
 	return;
 }

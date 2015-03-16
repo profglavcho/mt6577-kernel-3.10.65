@@ -425,8 +425,8 @@ struct _BSS_DESC_T {
 	P_P2P_DEVICE_DESC_T prP2pDesc;
 
 	UINT_8 aucIntendIfAddr[MAC_ADDR_LEN];	/* For IBSS, the SrcAddr is different from BSSID */
-/* UINT_8 ucDevCapabilityBitmap;  /* Device Capability Attribute. (P2P_DEV_CAPABILITY_XXXX) */ */
-/* UINT_8 ucGroupCapabilityBitmap;  /* Group Capability Attribute. (P2P_GROUP_CAPABILITY_XXXX) */ */
+/* UINT_8 ucDevCapabilityBitmap;  Device Capability Attribute. (P2P_DEV_CAPABILITY_XXXX)  */
+/* UINT_8 ucGroupCapabilityBitmap;   Group Capability Attribute. (P2P_GROUP_CAPABILITY_XXXX)  */
 
 	LINK_T rP2pDeviceList;
 

@@ -335,7 +335,7 @@
 *                             D A T A   T Y P E S
 ********************************************************************************
 */
-/* 3 /* Session for TX QUEUES */ */
+/* 3 /* Session for TX QUEUES  */
 /* The definition in this ENUM is used to categorize packet's Traffic Class according
  * to the their TID(User Priority).
  * In order to achieve QoS goal, a particular TC should not block the process of

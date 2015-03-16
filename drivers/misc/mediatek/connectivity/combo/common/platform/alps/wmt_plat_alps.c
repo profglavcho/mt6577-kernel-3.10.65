@@ -42,7 +42,8 @@
 #include <mach/mtk_rtc.h>
 #include <mach/mt_gpio.h>
 #include <cust_gpio_usage.h>
-#ifdef CONFIG_MTK_MT6306_SUPPORT
+#if 0
+//#ifdef CONFIG_MTK_MT6306_SUPPORT
 #include <mach/dcl_sim_gpio.h>
 #endif
 
@@ -58,7 +59,7 @@
 #ifdef GPIO_COMBO_BGF_EINT_PIN
 #define CONFIG_EINT_DEVICE_TREE 1
 
-#if CONFIG_EINT_DEVICE_TREE 1
+#if CONFIG_EINT_DEVICE_TREE 
 #include <linux/of.h>
 #include <linux/of_irq.h>
 #include <linux/irqreturn.h>
@@ -255,7 +256,7 @@ INT32 wmt_plat_audio_ctrl(CMB_STUB_AIF_X state, CMB_STUB_AIF_CTRL ctrl)
 }
 
 #ifdef GPIO_COMBO_BGF_EINT_PIN
-irqreturn_t wmt_plat_bgf_eirq_cb (int irq, void *data)
+VOID wmt_plat_bgf_eirq_cb (VOID)
 {
 #if CFG_WMT_PS_SUPPORT
 /* #error "need to disable EINT here" */

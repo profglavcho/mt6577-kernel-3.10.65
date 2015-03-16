@@ -1051,7 +1051,7 @@ VOID aisInitializeConnectionSettings(IN P_ADAPTER_T prAdapter, IN P_REG_INFO_T p
 
 	prConnSettings->u2DesiredNonHTRateSet = RATE_SET_ALL_ABG;
 
-	/* prConnSettings->u4FreqInKHz; /* Center frequency */ */
+	/* prConnSettings->u4FreqInKHz;  Center frequency  */
 
 
 	/* Set U-APSD AC */
