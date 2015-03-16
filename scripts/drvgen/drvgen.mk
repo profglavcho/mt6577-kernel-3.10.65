@@ -12,7 +12,7 @@ endif
 export DRVGEN_OUT
 
 DRVGEN_OUT_PATH := $(DRVGEN_OUT)/inc
-
+ifneq ($(MTK_PROJECT),diablo)
 ALL_DRVGEN_FILE :=
 
 ifeq ($(filter mt2601,$(MTK_PLATFORM)),)
@@ -180,5 +180,5 @@ $(DRVGEN_FILE_LIST): $(DRVGEN_OUT)/% : $(DRVGEN_PREBUILT_PATH)/%
 	@mkdir -p $(dir $@)
 	cp -f $< $@
 endif
-
+endif
 endif#MTK_PLATFORM
