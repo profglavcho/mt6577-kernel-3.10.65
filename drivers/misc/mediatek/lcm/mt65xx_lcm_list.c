@@ -17,7 +17,8 @@
 #else
 #define LCD_DEBUG(fmt)  printk(fmt)
 #endif
-
+extern LCM_DRIVER nt35516_lcm_drv;
+extern LCM_DRIVER nt35516_second_lcm_drv;
 extern LCM_DRIVER otm1282a_hd720_dsi_vdo_60hz_lcm_drv;
 extern LCM_DRIVER otm1282a_hd720_dsi_vdo_lcm_drv;
 extern LCM_DRIVER vvx10f008b00_wuxga_dsi_vdo_lcm_drv;
@@ -242,7 +243,12 @@ LCM_DRIVER* lcm_driver_list[] =
 #if defined(OTM1285A_HD720_DSI_VDO_TM)
 	&otm1285a_hd720_dsi_vdo_tm_lcm_drv,
 #endif
-
+#if defined(NT35516_SECOND)
+		&nt35516_second_lcm_drv,
+#endif
+#if defined(NT35516)
+	&nt35516_lcm_drv,
+#endif
 #if defined(S6E3FA2_FHD1080_DSI_VDO)
 	&s6e3fa2_fhd1080_dsi_vdo_lcm_drv,
 #endif
