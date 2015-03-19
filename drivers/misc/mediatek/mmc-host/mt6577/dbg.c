@@ -1583,61 +1583,77 @@ static int mtk_sdio_proc_write(struct file *file, const char *buf, unsigned long
 	return count;
 }
 #endif
+static  struct file_operations dbg1_proc_fops = {
+    .read=msdc_debug_proc_read,
+    .write = msdc_debug_proc_write
+};
+static  struct file_operations help1_proc_fops = {
+    .read=msdc_help_proc_read
+    
+};
+static  struct file_operations ft1_proc_fops = {
+    .read=msdc_debug_proc_read_FT,
+    .write = msdc_debug_proc_write_FT
+};
+static  struct file_operations sdiodbg_proc_fops = {
+    .read=mtk_sdio_proc_read,
+    .write = mtk_sdio_proc_write
+};
 int msdc_debug_proc_init(void) 
 {   	
-    struct proc_dir_entry *prEntry;
+
 
 #ifdef USER_BUILD_KERNEL
-    prEntry = create_proc_entry("msdc_debug", 0660, 0);
+    proc_create("msdc_debug", 0660, 0,&dbg1_proc_fops);
 #else
-    prEntry = create_proc_entry("msdc_debug", 0667, 0);
+    proc_create("msdc_debug", 0667, 0,&dbg1_proc_fops);
 #endif
-    if(prEntry)
-    {
-       prEntry->read_proc  = msdc_debug_proc_read;
-       prEntry->write_proc = msdc_debug_proc_write;
+    //if(prEntry)
+    //{
+     //  prEntry->read_proc  = msdc_debug_proc_read;
+    //   prEntry->write_proc = msdc_debug_proc_write;
        printk("[%s]: successfully create /proc/msdc_debug\n", __func__);
-    }else{
-       printk("[%s]: failed to create /proc/msdc_debug\n", __func__);
-    }
+    //}else{
+       //printk("[%s]: failed to create /proc/msdc_debug\n", __func__);
+   // }
 
 #ifdef USER_BUILD_KERNEL
-    prEntry = create_proc_entry("msdc_help", 0660, 0);
+    proc_create("msdc_help", 0660, 0,&help1_proc_fops);
 #else
-    prEntry = create_proc_entry("msdc_help", 0667, 0);
+    proc_create("msdc_help", 0667, 0,&help1_proc_fops);
 #endif
-    if(prEntry)
-    {
-       prEntry->read_proc = msdc_help_proc_read;
-       printk("[%s]: successfully create /proc/msdc_help\n", __func__);
-    }else{
-       printk("[%s]: failed to create /proc/msdc_help\n", __func__);
-    }
+    //if(prEntry)
+    //{
+     //  prEntry->read_proc = msdc_help_proc_read;
+      printk("[%s]: successfully create /proc/msdc_help\n", __func__);
+    //}else{
+      //printk("[%s]: failed to create /proc/msdc_help\n", __func__);
+    //}
       
 #ifdef USER_BUILD_KERNEL
-    prEntry = create_proc_entry("msdc_FT", 0660, 0);
+    proc_create("msdc_FT", 0660, 0,&ft1_proc_fops);
 #else
-    prEntry = create_proc_entry("msdc_FT", 0667, 0);
+    proc_create("msdc_FT", 0667, 0,&ft1_proc_fops);
 #endif
-		if(prEntry)
-    {
-       prEntry->read_proc  = msdc_debug_proc_read_FT;
-       prEntry->write_proc = msdc_debug_proc_write_FT;
+	//	if(prEntry)
+   // {
+    //   prEntry->read_proc  = msdc_debug_proc_read_FT;
+      // prEntry->write_proc = msdc_debug_proc_write_FT;
        printk("[%s]: successfully create /proc/msdc_FT\n", __func__);
-    }else{
-       printk("[%s]: failed to create /proc/msdc_FT\n", __func__);
-    }
+    //}else{
+      // printk("[%s]: failed to create /proc/msdc_FT\n", __func__);
+    //}
 
     memset(msdc_drv_mode,0,sizeof(msdc_drv_mode));
 #ifndef USER_BUILD_KERNEL
-    prEntry = create_proc_entry("mtk_sdio_debug", 0660, 0);
-    if(prEntry) {
-      prEntry->read_proc  = mtk_sdio_proc_read;
-      prEntry->write_proc = mtk_sdio_proc_write;
+    proc_create("mtk_sdio_debug", 0660, 0,&sdiodbg_proc_fops);
+    //if(prEntry) {
+      //prEntry->read_proc  = mtk_sdio_proc_read;
+      //prEntry->write_proc = mtk_sdio_proc_write;
       printk("[%s]: successfully create /proc/mtk_sdio_debug\n", __func__);
-    }else{
-      printk("[%s]: failed to create /proc/mtk_sdio_debug\n", __func__);
-    } 
+    //}else{
+      //printk("[%s]: failed to create /proc/mtk_sdio_debug\n", __func__);
+    //} 
 #endif
     return 0 ;
 }
