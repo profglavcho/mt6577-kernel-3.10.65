@@ -2486,20 +2486,24 @@ ssize_t fgadc_log_write( struct file *filp, const char __user *buff,
     
     return len;
 }
+static  struct file_operations fgadc_log_proc_fops = {
+  
+    .write = fgadc_log_write
+};
 
 int init_proc_log_fg(void)
 {
     int ret=0;
-    proc_entry_fgadc = create_proc_entry( "fgadc_log", 0644, NULL );
+    proc_create( "fgadc_log", 0644, NULL,&fgadc_log_proc_fops );
     
-    if (proc_entry_fgadc == NULL) {
-        ret = -ENOMEM;
-          xlog_printk(ANDROID_LOG_DEBUG, "Power/Battery", "init_proc_log_fg: Couldn't create proc entry\n");
-    } else {
-        proc_entry_fgadc->write_proc = fgadc_log_write;
+   // if (proc_entry_fgadc == NULL) {
+      //  ret = -ENOMEM;
+        //  xlog_printk(ANDROID_LOG_DEBUG, "Power/Battery", //"init_proc_log_fg: Couldn't create proc entry\n");
+    //} else {
+      //  proc_entry_fgadc->write_proc = fgadc_log_write;
         //proc_entry->owner = THIS_MODULE;
         xlog_printk(ANDROID_LOG_DEBUG, "Power/Battery", "init_proc_log_fg loaded.\n");
-    }
+    //}
   
     return ret;
 }

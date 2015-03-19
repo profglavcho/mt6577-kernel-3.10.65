@@ -1008,20 +1008,24 @@ ssize_t bat_log_write( struct file *filp, const char __user *buff,
     
     return len;
 }
+static  struct file_operations batt_log_proc_fops = {
+  
+    .write = bat_log_write
+};
 
 int init_proc_log(void)
 {
     int ret=0;
-    proc_entry = create_proc_entry( "batdrv_log", 0644, NULL );
+    proc_create( "batdrv_log", 0644, NULL,&batt_log_proc_fops);
     
-    if (proc_entry == NULL) {
-        ret = -ENOMEM;
-          xlog_printk(ANDROID_LOG_INFO, "Power/Battery", "init_proc_log: Couldn't create proc entry\n");
-    } else {
-        proc_entry->write_proc = bat_log_write;
+    //if (proc_entry == NULL) {
+    //    ret = -ENOMEM;
+    //      xlog_printk(ANDROID_LOG_INFO, "Power/Battery", "init_proc_log: Couldn't create proc entry\n");
+    //} else {
+    //    proc_entry->write_proc = bat_log_write;
         //proc_entry->owner = THIS_MODULE;
         xlog_printk(ANDROID_LOG_INFO, "Power/Battery", "init_proc_log loaded.\n");
-    }
+     // }
   
     return ret;
 }
@@ -1655,7 +1659,27 @@ INT16 BattThermistorConverTemp(INT32 Res)
     int i=0;
     INT32 RES1=0,RES2=0;
     INT32 TBatt_Value=-200,TMP1=0,TMP2=0;
-
+#if defined(BAT_NTC_TSM_1)
+BATT_TEMPERATURE Batt_Temperature_Table[] = {
+{-20,70603},    
+{-15,55183},
+{-10,43499},
+{ -5,34569},
+{  0,27680},
+{  5,22316},
+{ 10,18104},
+{ 15,14773},
+{ 20,12122},
+{ 25,10000},
+{ 30,8294},
+{ 35,6915},
+{ 40,5795},
+{ 45,4882},
+{ 50,4133},
+{ 55,3516},
+{ 60,3004}
+};
+#endif
 
 #if (BAT_NTC_10 == 1)	//Actually, it is 8.5K
     BATT_TEMPERATURE Batt_Temperature_Table[] = {
@@ -4944,6 +4968,10 @@ static ssize_t battery_cmd_write(struct file *file, const char *buffer, unsigned
     
     return -EINVAL;
 }
+static  struct file_operations batt_cmd_proc_fops = {
+    .read = battery_cmd_read,
+    .write = battery_cmd_write
+};
 
 static int mt_batteryNotify_probe(struct platform_device *dev)    
 {    
@@ -4963,12 +4991,12 @@ static int mt_batteryNotify_probe(struct platform_device *dev)
     }
     else
     {
-        entry = create_proc_entry("battery_cmd", S_IRUGO | S_IWUSR, battery_dir);
-        if (entry)
-        {
-            entry->read_proc = battery_cmd_read;
-            entry->write_proc = battery_cmd_write;
-        }
+        proc_create("battery_cmd", S_IRUGO | S_IWUSR, battery_dir,&batt_cmd_proc_fops);
+//        if (entry)
+//        {
+//           entry->read_proc = battery_cmd_read;
+//            entry->write_proc = battery_cmd_write;
+//        }
     }
 
     xlog_printk(ANDROID_LOG_INFO, "Power/Battery", "******** mtk_battery_cmd!! ********\n" );    

@@ -2818,6 +2818,10 @@ static ssize_t pmic_cmd_write(struct file *file, const char *buffer, unsigned lo
     
     return -EINVAL;
 }
+static  struct file_operations pmicxxx_proc_fops = {
+    .read = pmic_cmd_read,
+    .write = pmic_cmd_write
+};
 
 void pmic_test_cmd_init(void)
 {
@@ -2831,12 +2835,8 @@ void pmic_test_cmd_init(void)
     }
     else
     {
-        entry = create_proc_entry("pmic_cmd", S_IRUGO | S_IWUSR, pmic_dir);
-        if (entry)
-        {
-            entry->read_proc = pmic_cmd_read;
-            entry->write_proc = pmic_cmd_write;
-        }
+        proc_create("pmic_cmd", S_IRUGO | S_IWUSR, pmic_dir,&pmicxxx_proc_fops);
+        
     }
 
     xlog_printk(ANDROID_LOG_INFO, "Power/PMIC", "******** mtk_pmic_cmd!! ********\n" );
