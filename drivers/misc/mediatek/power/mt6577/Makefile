@@ -1,4 +1,5 @@
 include $(srctree)/drivers/misc/mediatek/Makefile.custom
+
 obj-$(CONFIG_MTK_PMIC)          += pmic_mt6329.o pmic_mt6329_bank1.o upmu_common.o
 
 ifeq ($(MTK_NCP1851_SUPPORT),yes) 
