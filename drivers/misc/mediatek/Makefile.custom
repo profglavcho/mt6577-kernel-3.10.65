@@ -29,7 +29,7 @@ ccflags-y += -I$(MTK_PLATFORM_PATH_ROOT)/include \
              -I$(MTK_PROJECT_PATH_ROOT)/camera/camera \
              -I$(MTK_PROJECT_PATH_ROOT)/common \
              -I$(MTK_PROJECT_PATH_ROOT)/dct/dct \
-             -I$(MTK_PROJECT_PATH_ROOT)/hdmi \
+             -I$(MTK_PROJECT_PATH_ROOT)/battery \
              -I$(MTK_PROJECT_PATH_ROOT)/imgsensor/inc \
              -I$(MTK_PROJECT_PATH_ROOT)/keypad \
              -I$(MTK_PROJECT_PATH_ROOT)/leds/mt65xx \
