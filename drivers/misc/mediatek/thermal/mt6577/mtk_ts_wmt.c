@@ -1142,6 +1142,30 @@ static ssize_t wmt_tm_write(struct file *file, const char *buffer, unsigned long
 
     return -EINVAL;
 }
+static  struct file_operations wmt_tm_proc_fops = {
+    .read= wmt_tm_read,
+    .write = wmt_tm_write
+};
+
+static  struct file_operations tm_pid_proc_fops = {
+    .read= wmt_tm_pid_read,
+    .write = wmt_tm_pid_write
+};
+
+static  struct file_operations wmt_val_proc_fops = {
+    .read= wmt_wifi_algo_read,
+    .write = wmt_wifi_algo_write
+};
+
+static  struct file_operations tx_thro_proc_fops = {
+    .read= wmt_wifi_tx_thro_read
+    
+};
+
+static  struct file_operations wfd_stat_proc_fops = {
+    .read= wmt_tm_wfd_read,
+    .write = wmt_tm_wfd_write
+};
 
 static int wmt_tm_proc_register(void)
 {
@@ -1154,34 +1178,30 @@ static int wmt_tm_proc_register(void)
     if (!wmt_tm_proc_dir) {
         wmt_tm_printk("[wmt_tm_proc_register]: mkdir /proc/wmt_tm failed\n");
     } else {
-        entry = create_proc_entry("wmt_tm", S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP, wmt_tm_proc_dir);
-        if (entry) {
-            entry->read_proc = wmt_tm_read;
-            entry->write_proc = wmt_tm_write;
-        }
+        proc_create("wmt_tm", S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP, wmt_tm_proc_dir,&wmt_tm_proc_fops);
+        
+	proc_create("tm_pid", S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP, wmt_tm_proc_dir,&tm_pid_proc_fops);
+       // if (entry) {
+        //    entry->read_proc = wmt_tm_pid_read;
+          //  entry->write_proc = wmt_tm_pid_write;
+        //}
 
-        entry = create_proc_entry("tm_pid", S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP, wmt_tm_proc_dir);
-        if (entry) {
-            entry->read_proc = wmt_tm_pid_read;
-            entry->write_proc = wmt_tm_pid_write;
-        }
+        proc_create("wmt_val", S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP, wmt_tm_proc_dir,&wmt_val_proc_fops);
+        //if (entry) {
+         //   entry->read_proc = wmt_wifi_algo_read;
+           // entry->write_proc = wmt_wifi_algo_write;
+        //}
 
-        entry = create_proc_entry("wmt_val", S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP, wmt_tm_proc_dir);
-        if (entry) {
-            entry->read_proc = wmt_wifi_algo_read;
-            entry->write_proc = wmt_wifi_algo_write;
-        }
+        proc_create("tx_thro", S_IRUGO | S_IWUSR, wmt_tm_proc_dir,&tx_thro_proc_fops);
+        //if (entry) {
+          //  entry->read_proc = wmt_wifi_tx_thro_read;
+        //}
 
-        entry = create_proc_entry("tx_thro", S_IRUGO | S_IWUSR, wmt_tm_proc_dir);
-        if (entry) {
-            entry->read_proc = wmt_wifi_tx_thro_read;
-        }
-
-        entry = create_proc_entry("wfd_stat", S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP, wmt_tm_proc_dir);
-        if (entry) {
-            entry->read_proc = wmt_tm_wfd_read;
-            entry->write_proc = wmt_tm_wfd_write;
-        }
+        proc_create("wfd_stat", S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP, wmt_tm_proc_dir,&wfd_stat_proc_fops);
+        //if (entry) {
+          //  entry->read_proc = wmt_tm_wfd_read;
+            //entry->write_proc = wmt_tm_wfd_write;
+        //}
     }
     return 0;
 }

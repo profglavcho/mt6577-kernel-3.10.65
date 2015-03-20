@@ -29,7 +29,7 @@
 #include <mach/irqs.h>
 #include <mach/mtk_rtc.h>
 
-#include <rtc-mt.h>		/* custom file */
+//#include <rtc-mt.h>		/* custom file */
 
 #define XLOG_MYTAG	"Power/RTC"
 #define RTC_NAME	"mt-rtc"
