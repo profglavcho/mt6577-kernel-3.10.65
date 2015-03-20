@@ -1,4 +1,4 @@
-#include <linux/autoconf.h>
+#include <generated/autoconf.h>
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 #include <linux/init.h>
@@ -38,8 +38,8 @@
 #include "dbg.h"
 
 #include <linux/proc_fs.h>
-#include "../../../../../../kernel/drivers/mmc/card/queue.h"
-#include "partition_define.h"
+#include "../../../mmc/card/queue.h"
+#include "../../ptgen/mt6577/partition_define.h"
 #include "mach/mt_clkmgr_internal.h"
 #include <mach/mt_storage_logger.h>
 

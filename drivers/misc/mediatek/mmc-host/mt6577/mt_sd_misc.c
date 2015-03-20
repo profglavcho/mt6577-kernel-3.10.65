@@ -1,4 +1,4 @@
-#include <linux/autoconf.h>
+#include <generated/autoconf.h>
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 #include <linux/init.h>
@@ -29,16 +29,16 @@
 #include "mt_sd.h"
 #include <linux/mmc/sd_misc.h>
 #include "board-custom.h"
-#include "../../../../../../kernel/drivers/mmc/card/queue.h"
+#include "../../../mmc/card/queue.h"
 
 
 #include <linux/proc_fs.h>
 #include <linux/fs.h>
 #include <asm/uaccess.h>
 
-#ifdef MTK_EMMC_SUPPORT
-#include "partition_define.h"
-#endif
+//#ifdef MTK_EMMC_SUPPORT
+#include "../../ptgen/mt6577/partition_define.h"
+//#endif
 
 #define DRV_NAME_MISC            "misc-sd"
 
@@ -837,7 +837,7 @@ static int simple_mmc_erase_func(unsigned int start, unsigned int size)
     }
     
     printk("[%s]: start=0x%x, size=%d, arg=0x%x, can_trim=(0x%x),EXT_CSD_SEC_GB_CL_EN=0x%x\n", 
-                    __func__, start, size, arg, host->mmc->card->ext_csd.sec_feature_support, EXT_CSD_SEC_GB_CL_EN); 
+                    __func__, start, size, arg, host->mmc->card->ext_csd.sec_feature_support, (unsigned int)EXT_CSD_SEC_GB_CL_EN); 
     mmc_erase(host->mmc->card, start, size, arg);
 
 #if DEBUG_MMC_IOCTL
